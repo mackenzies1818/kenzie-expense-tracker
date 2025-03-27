@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LocationFilter = ({ locationFilter, setLocationFilter, locations }) => (
-  <div className="mb-4">
+  <div className="mb-4 text-xs pl-1 pb-5">
     <label htmlFor="location-filter" className="mr-2">Filter by Location:</label>
     <select
       id="location-filter"
