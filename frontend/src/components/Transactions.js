@@ -60,22 +60,22 @@ const Transactions = () => {
            >
              Date {sortOrder === "asc" ? "↑" : "↓"}
           </th>
-          <th className="py-2 px-1 text-center align-middle leading-none">Category</th>
-          <th className="py-2 px-1 text-center align-middle leading-none">Amount</th>
-          <th className="py-2 px-1 text-center align-middle leading-none">Location</th>
-          <th className="py-2 px-1 text-center align-middle leading-none">Description</th>
-          <th className="py-2 px-1 text-center align-middle leading-none"></th>
+          <th className="transactions-label">Category</th>
+          <th className="transactions-label">Amount</th>
+          <th className="transactions-label">Location</th>
+          <th className="transactions-label">Description</th>
+          <th className="transactions-label"></th>
         </tr>
       </thead>
       <tbody className="text-xs">
         {currentRows.map((expense) => (
           <tr key={expense._id} className="border-t hover:bg-gray-100 text-xs leading-none py-0 h-[30px]" >
-            <td className="py-[2px] px-[1px] text-center align-middle leading-none h-[30px]">{expense.date}</td>
-            <td className="py-[2px] px-[1px] text-center align-middle leading-none h-[30px]">{expense.category}</td>
-            <td className="py-[2px] px-[1px] text-center align-middle leading-none h-[30px]">${expense.amount}</td>
-            <td className="py-[2px] px-[1px] text-center align-middle leading-none h-[30px]">{expense.location}</td>
-            <td className="py-[2px] px-[1px] text-center align-middle leading-none h-[30px]">{expense.description}</td>
-            <td className="py-[2px] px-[1px] text-center align-middle leading-none h-[30px]">
+            <td className="transactions-field">{expense.date}</td>
+            <td className="transactions-field">{expense.category}</td>
+            <td className="transactions-field">${expense.amount}</td>
+            <td className="transactions-field">{expense.location}</td>
+            <td className="transactions-field">{expense.description}</td>
+            <td className="transactions-field">
               <button
                 onClick={() => handleDelete(expense._id)}
                 className="px-2 py-1 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 transition-all duration-200"

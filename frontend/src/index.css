@@ -18,3 +18,20 @@ table {
   table-layout: fixed !important;
 }
 
+.form-label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.form-field {
+  @apply mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500;
+}
+
+.transactions-label {
+  @apply py-2 px-1 text-center align-middle leading-none;
+}
+
+.transactions-field {
+  @apply py-[2px] px-[1px] text-center align-middle leading-none h-[30px];
+}
+
+

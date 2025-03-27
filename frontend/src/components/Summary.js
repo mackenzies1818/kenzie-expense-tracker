@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useExpenses } from "../context/ExpensesContext";
 
-//TODO
 const Summary = () => {
   const { expenses } = useExpenses();
   const [monthlyTotal, setMonthlyTotal] = useState(0);

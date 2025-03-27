@@ -37,7 +37,7 @@ const AddExpense = () => {
             <h2 className="text-2xl font-semibold mb-4">Add New Expense</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="date" className="form-label">
                   Date:
                 </label>
                 <input
@@ -47,11 +47,11 @@ const AddExpense = () => {
                   value={formData.date}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="form-field"
                 />
               </div>
               <div>
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="category" className="form-label">
                   Category:
                 </label>
                 <select
@@ -60,7 +60,7 @@ const AddExpense = () => {
                   value={formData.category}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="form-field"
                 >
                   <option value="" disabled>
                     Select a category
@@ -73,7 +73,7 @@ const AddExpense = () => {
                 </select>
               </div>
               <div>
-                <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="amount" className="form-label">
                   Amount:
                 </label>
                 <input
@@ -83,11 +83,11 @@ const AddExpense = () => {
                   value={formData.amount}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="form-field"
                 />
               </div>
               <div>
-                <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="location" className="form-label">
                   Location:
                 </label>
                 <input
@@ -97,11 +97,11 @@ const AddExpense = () => {
                   value={formData.location}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="form-field"
                 />
               </div>
               <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="description" className="form-label">
                   Description:
                 </label>
                 <input
@@ -111,7 +111,7 @@ const AddExpense = () => {
                   value={formData.description}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="form-field"
                 />
               </div>
               <div className="flex justify-between space-x-4">
