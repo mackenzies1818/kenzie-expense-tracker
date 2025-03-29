@@ -9,12 +9,13 @@ import { ExpensesProvider } from "./context/ExpensesContext";
 
 function App() {
   return (
+
     <ExpensesProvider>
-      <div className="App">
+      <div className="App ">
         <div className="flex bg-gray-100">
             <Sidebar />
         </div>
-        <div className="ml-64 p-6 flex-1">
+        <div className="sm:ml-12 sm:p-4 sm:flex-none md:ml-64 p-6 flex-1">
             <h1><Header /></h1>
             <ExpensesChart />
             <h2 className ="text-xl font-semibold pb-3">Transactions</h2>

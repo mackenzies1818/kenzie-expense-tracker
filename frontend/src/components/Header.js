@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaUser } from 'react-icons/fa';
 
 const Header = () => (
   <div className="flex justify-between items-left bg-white pb-8">
