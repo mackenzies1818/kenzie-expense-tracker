@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useExpenses } from "../context/ExpensesContext";
+import { categories } from "../constants/Categories";
 
-//todo: ADD FILTER FOR DATE + CATEGORY ON SPENDINGX
 const Transactions = () => {
-  const { expenses, removeExpense } = useExpenses();
+  const { expenses, removeExpense, updateFilters, filters } = useExpenses();
+  const [sortedExpenses, setSortedExpenses] = useState(expenses);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortOrder, setSortOrder] = useState("asc");
+
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this transaction?")) {
       removeExpense(id);
@@ -11,11 +15,22 @@ const Transactions = () => {
   };
   // Sync sortedExpenses when context data changes
   useEffect(() => {
-    setSortedExpenses(expenses);  // Sync state when context updates
-  }, [expenses]);
+      let filtered = [...expenses];
+      if (selectedCategory !== "all") {
+        filtered = filtered.filter((e) => e.category === selectedCategory);
+      }
+
+      const sorted = filtered.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+      });
+
+      setSortedExpenses(sorted);
+    setCurrentPage(1);
+
+  }, [expenses, selectedCategory, sortOrder]);
   //handle sorting of date column
-  const [sortedExpenses, setSortedExpenses] = useState(expenses);
-  const [sortOrder, setSortOrder] = useState("asc");
   const sortByDate = () => {
     const sorted = [...sortedExpenses].sort((a, b) => {
         const dateA = new Date(a.date);
@@ -60,7 +75,20 @@ const Transactions = () => {
            >
              Date {sortOrder === "asc" ? "↑" : "↓"}
           </th>
-          <th className="transactions-label">Category</th>
+          <th>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="bg-indigo-600 text-white text-xs font-semibold rounded-md p-[2px] cursor-pointer"
+              >
+                <option value="all">Category</option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.label}
+                  </option>
+                ))}
+              </select>
+          </th>
           <th className="transactions-label">Amount</th>
           <th className="transactions-label">Location</th>
           <th className="transactions-label">Description</th>

@@ -2,15 +2,17 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5001/expenses";
 
-export const fetchExpenses = async () => {
+export const fetchExpenses = async (filters = {}) => {
   try {
-    const response = await axios.get(API_URL);
+    const params = new URLSearchParams(filters).toString();
+    const response = await axios.get(`${API_URL}?${params}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching expenses:", error);
     return [];
   }
 };
+
 
 export const addExpense = async (expense) => {
   try {

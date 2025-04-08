@@ -32,12 +32,19 @@ const Expense = mongoose.model("Expense", ExpenseSchema);
 
 app.get("/expenses", async (req, res) => {
   try {
-    const expenses = await Expense.find();
+    const { location, category } = req.query;
+
+    const filter = {};
+    if (category) filter.category = category;
+    if (location) filter.location = location;
+
+    const expenses = await Expense.find(filter);
     res.status(200).send(expenses);
   } catch (error) {
-    res.status(500).send('Error fetching expenses');
+    res.status(500).send("Error fetching expenses");
   }
 });
+
 
 app.post("/expenses", async (req, res) => {
   try {

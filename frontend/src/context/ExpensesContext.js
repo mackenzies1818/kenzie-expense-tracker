@@ -5,15 +5,21 @@ const ExpensesContext = createContext();
 
 export const ExpensesProvider = ({ children }) => {
   const [expenses, setExpenses] = useState([]);
+  const [filters, setFilters] = useState({});
 
-  const loadExpenses = async () => {
-    const data = await fetchExpenses();
+  const loadExpenses = async (customFilters = filters ) => {
+    const data = await fetchExpenses(customFilters);
     setExpenses(data);
   };
 
   const addNewExpense = async (expense) => {
     await addExpense(expense);
     loadExpenses();
+  };
+
+  const updateFilters = (newFilters) => {
+    setFilters(newFilters);
+    loadExpenses(newFilters);
   };
 
   const removeExpense = async (id) => {
@@ -26,7 +32,7 @@ export const ExpensesProvider = ({ children }) => {
   }, []);
 
   return (
-    <ExpensesContext.Provider value={{ expenses, addNewExpense, removeExpense }}>
+    <ExpensesContext.Provider value={{ expenses, addNewExpense, removeExpense, updateFilters, filters }}>
       {children}
     </ExpensesContext.Provider>
   );
