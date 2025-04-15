@@ -3,18 +3,29 @@ import { fetchExpenses, addExpense, deleteExpense } from "../services/api";
 
 const ExpensesContext = createContext();
 
-export const ExpensesProvider = ({ children }) => {
+export const ExpensesProvider = ({ children, user }) => {
   const [expenses, setExpenses] = useState([]);
   const [filters, setFilters] = useState({});
 
+  useEffect(() => {
+    if (user?.userId) {
+      loadExpenses();
+    }
+  }, );
+
   const loadExpenses = async (customFilters = filters ) => {
-    const data = await fetchExpenses(customFilters);
-    setExpenses(data);
+  if (user?.userId) {
+       const data = await fetchExpenses(user.userId, customFilters);
+       setExpenses(data);
+    }
   };
 
   const addNewExpense = async (expense) => {
-    await addExpense(expense);
-    loadExpenses();
+    if (user?.userId) {
+       expense.userId = user.userId;
+       await addExpense(expense);
+       loadExpenses();
+    }
   };
 
   const updateFilters = (newFilters) => {
@@ -26,10 +37,6 @@ export const ExpensesProvider = ({ children }) => {
     await deleteExpense(id);
     loadExpenses();
   };
-
-  useEffect(() => {
-    loadExpenses();
-  }, []);
 
   return (
     <ExpensesContext.Provider value={{ expenses, addNewExpense, removeExpense, updateFilters, filters }}>

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { FaChartPie, FaWallet, FaCog, FaGlobe } from "react-icons/fa";
 
-//TODO
 class Sidebar extends Component {
   render() {
     return (

@@ -3,7 +3,7 @@ import { useExpenses } from "../context/ExpensesContext";
 import { categories } from "../constants/Categories";
 
 const Transactions = () => {
-  const { expenses, removeExpense, updateFilters, filters } = useExpenses();
+  const { expenses, removeExpense } = useExpenses();
   const [sortedExpenses, setSortedExpenses] = useState(expenses);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortOrder, setSortOrder] = useState("asc");
