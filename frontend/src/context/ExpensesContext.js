@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { fetchExpenses, addExpense, deleteExpense } from "../services/api";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { fetchExpenses, addExpense, deleteExpense } from '../services/api';
 
 const ExpensesContext = createContext();
 
@@ -14,17 +14,17 @@ export const ExpensesProvider = ({ children, user }) => {
   }, );
 
   const loadExpenses = async (customFilters = filters ) => {
-  if (user?.userId) {
-       const data = await fetchExpenses(user.userId, customFilters);
-       setExpenses(data);
+    if (user?.userId) {
+      const data = await fetchExpenses(user.userId, customFilters);
+      setExpenses(data);
     }
   };
 
   const addNewExpense = async (expense) => {
     if (user?.userId) {
-       expense.userId = user.userId;
-       await addExpense(expense);
-       loadExpenses();
+      expense.userId = user.userId;
+      await addExpense(expense);
+      loadExpenses();
     }
   };
 

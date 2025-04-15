@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import Home from './components/Home';
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import { ExpensesProvider } from "./context/ExpensesContext";
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import { ExpensesProvider } from './context/ExpensesContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();

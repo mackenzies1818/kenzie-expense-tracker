@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useExpenses } from "../context/ExpensesContext";
-import { categories } from "../constants/Categories";
+import React, { useState } from 'react';
+import { useExpenses } from '../context/ExpensesContext';
+import { categories } from '../constants/Categories';
 
 //TODO: add functionality of payment method, for now, assuming cash
 const AddExpense = () => {
   const { addNewExpense } = useExpenses();
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({ category : "", amount: "", date: "", location : "", description: "" });
+  const [formData, setFormData] = useState({ category : '', amount: '', date: '', location : '', description: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
+      ...prevData,
+      [name]: value,
     }));
   };
 
@@ -20,7 +20,7 @@ const AddExpense = () => {
     //TODO: add validation on fields
     e.preventDefault();
     addNewExpense(formData);
-    setFormData({ category : "", amount: "", date: "", location : "", description: "" });
+    setFormData({ category : '', amount: '', date: '', location : '', description: '' });
     setIsOpen(false);
   };
 
