@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useExpenses } from '../context/ExpensesContext';
+import { useExpenses } from "../context/ExpensesContext";
 
 const Summary = () => {
   const { expenses } = useExpenses();
@@ -41,19 +41,19 @@ const Summary = () => {
   }, [expenses]);
 
   return (
-    <div>
+  <div>
       <h2 className ="text-2xl font-semibold pb-3 pt-10">Summary</h2>
       <div className="grid grid-cols-2 gap-4 p-4">
         <div className="bg-white p-4 rounded shadow-md text-center">
-          <h3 className="text-lg font-semibold">Monthly Expenses</h3>
-          <p className="text-2xl font-bold">${monthlyTotal}</p>
+            <h3 className="text-lg font-semibold">Monthly Expenses</h3>
+            <p className="text-2xl font-bold">${monthlyTotal}</p>
         </div>
         <div className="bg-white p-4 rounded shadow-md text-center">
-          <h3 className="text-lg font-semibold">Year to Date Expenses</h3>
-          <p className="text-2xl font-bold">${yearlyTotal}</p>
+            <h3 className="text-lg font-semibold">Year to Date Expenses</h3>
+            <p className="text-2xl font-bold">${yearlyTotal}</p>
         </div>
       </div>
-    </div>
+  </div>
   );
 };
 
