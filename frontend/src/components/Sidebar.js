@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,7 @@ export default function Sidebar() {
       </button>
 
       <div className={`h-screen w-64 bg-indigo-600 text-white shadow-lg flex flex-col justify-start p-4 fixed top-0 left-0 transition-transform duration-300 ease-in-out
-        ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:w-64 z-50`}>
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:w-64 z-50`}>
 
         <div className="flex items-center mb-8">
           <button
