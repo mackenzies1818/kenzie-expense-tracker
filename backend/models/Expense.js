@@ -12,6 +12,7 @@ const expenseSchema = new mongoose.Schema({
   location: { type: String },
   description: { type: String },
   paymentMethod: { type: String, enum: ["cash", "card", "other"], default: "cash" },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 const Expense = mongoose.model("Expense", expenseSchema);
