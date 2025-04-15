@@ -1,44 +1,29 @@
-import React from 'react';
-import Home from './components/Home';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import { ExpensesProvider } from './context/ExpensesContext';
-import { AuthProvider, useAuth } from './context/AuthContext';
-
-const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth();
-  if (loading) return <div>Loading...</div>;
-  return user ? children : <Navigate to="/login" />;
-};
-const ExpensesWrapper = ({ children }) => {
-  const { user, loading } = useAuth();
-
-  if (loading) return <div>Loading...</div>;
-
-  if (!user) return children;
-
-  return (
-    <ExpensesProvider user={user}>
-      {children}
-    </ExpensesProvider>
-  );
-};
+import React from "react";
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import Summary from './components/Summary';
+import ExpensesChart from './components/ExpensesChart';
+import Transactions from './components/Transactions';
+import AddExpense from './components/AddExpense';
+import { ExpensesProvider } from "./context/ExpensesContext";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <ExpensesWrapper>
-          <Routes>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path="*" element={<Navigate to="/login" />} />
-          </Routes>
-        </ExpensesWrapper>
-      </Router>
-    </AuthProvider>
+    <ExpensesProvider>
+      <div className="App">
+        <div className="flex bg-gray-100">
+            <Sidebar />
+        </div>
+        <div className="ml-64 p-6 flex-1">
+            <h1><Header /></h1>
+            <ExpensesChart />
+            <h2 className ="text-xl font-semibold pb-3">Transactions</h2>
+            <AddExpense />
+            <Transactions />
+            <Summary />
+        </div>
+      </div>
+    </ExpensesProvider>
   );
 }
 

@@ -1,36 +1,19 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { fetchExpenses, addExpense, deleteExpense } from '../services/api';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { fetchExpenses, addExpense, deleteExpense } from "../services/api";
 
 const ExpensesContext = createContext();
 
-export const ExpensesProvider = ({ children, user }) => {
+export const ExpensesProvider = ({ children }) => {
   const [expenses, setExpenses] = useState([]);
-  const [filters, setFilters] = useState({});
 
-  useEffect(() => {
-    if (user?.userId) {
-      loadExpenses();
-    }
-  }, );
-
-  const loadExpenses = async (customFilters = filters ) => {
-    if (user?.userId) {
-      const data = await fetchExpenses(user.userId, customFilters);
-      setExpenses(data);
-    }
+  const loadExpenses = async () => {
+    const data = await fetchExpenses();
+    setExpenses(data);
   };
 
   const addNewExpense = async (expense) => {
-    if (user?.userId) {
-      expense.userId = user.userId;
-      await addExpense(expense);
-      loadExpenses();
-    }
-  };
-
-  const updateFilters = (newFilters) => {
-    setFilters(newFilters);
-    loadExpenses(newFilters);
+    await addExpense(expense);
+    loadExpenses();
   };
 
   const removeExpense = async (id) => {
@@ -38,8 +21,12 @@ export const ExpensesProvider = ({ children, user }) => {
     loadExpenses();
   };
 
+  useEffect(() => {
+    loadExpenses();
+  }, []);
+
   return (
-    <ExpensesContext.Provider value={{ expenses, addNewExpense, removeExpense, updateFilters, filters }}>
+    <ExpensesContext.Provider value={{ expenses, addNewExpense, removeExpense }}>
       {children}
     </ExpensesContext.Provider>
   );

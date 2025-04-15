@@ -23,8 +23,8 @@ The repository is organized into two main directories:
     - JavaScript
 
 - **Backend**:
-    - Node.js
-    - MongoDB
+    - [Specify backend technologies here, e.g., Node.js, Express]
+    - [Specify database used here, e.g., MongoDB, PostgreSQL]
 
 ## Getting Started
 
@@ -39,8 +39,6 @@ To set up the project locally, follow these steps:
    ```bash
    cd /backend
    npm install
-   brew tap mongodb/brew
-   brew install mongodb-community@7.0
 
 3. **Starting DB server**:
    ```bash
