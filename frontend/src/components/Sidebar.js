@@ -1,7 +1,5 @@
-import React, { Component } from "react";
-import { FaChartPie, FaWallet, FaCog, FaGlobe } from "react-icons/fa";
+import React, { Component } from 'react';
 
-//TODO
 class Sidebar extends Component {
   render() {
     return (
@@ -14,14 +12,14 @@ class Sidebar extends Component {
             className="hover:text-gray-300 block py-2"
             target="_blank"
             rel="noopener noreferrer"
-            >
+          >
             About</a>
           <a
             href="https://wa.me/16507739275"
             className="hover:text-gray-300 block py-2"
             target="_blank"
             rel="noopener noreferrer"
-            >
+          >
             Contact</a>
         </nav>
       </div>
